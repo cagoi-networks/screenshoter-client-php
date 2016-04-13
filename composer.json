@@ -1,0 +1,11 @@
+{
+    "name": "cagoi-networks/screenshoter-client-php",
+    "description": "Client library for working with screenshots server",
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-4": {"Cagoi\\ContentGrabber\\": ""}
+    }
+}
