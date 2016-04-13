@@ -9,12 +9,16 @@ Quick structure description
 
 ###"Root directory"
 **Cagoi\Screenshots\Client** 			- this class manages all process;
-**Cagoi\Screenshots\ImageCreator** 	- helps create images by response from server;
+
+**Cagoi\Screenshots\ImageCreator** 		- helps create images by response from server;
+
 **Cagoi\Screenshots\Exception** 		- library exception;
 
 ###"Adapter" directory
 In this directory you can find predefined adapters. Now available adapter for MongoDb, but you can define new adapter
-for your own purposes. It needs for handle such operations:
+for your own purposes. 
+
+It needs for handle such operations:
 - Make screenshot;
 - Get screenshot;
 - Callback processing.
@@ -23,8 +27,10 @@ for your own purposes. It needs for handle such operations:
 Classes for log work process. You can define new logger for your own purposes. Cagoi\Screenshots\Logger\FileLogger - log in file
 	
 ###"Params" directory
-Classes in this directory helps prepare request parameters.
-**Cagoi\Screenshots\Params\GetParams** - helps with parameters for get screenshot request.
+Classes in this directory helps prepare request parameters:
+
+**Cagoi\Screenshots\Params\GetParams** - helps with parameters for get screenshot request
+
 **Cagoi\Screenshots\Params\MakeParams** - helps with parameters for make screenshot request
 
 	
