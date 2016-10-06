@@ -124,6 +124,8 @@ class Client {
             }
         } else {
             $response = json_decode($response, true);
+            $response = (is_array($response)) ?
+                $response : [$response];
             if ($this->_logger) {
                 $this->_logger->log(Logger\LoggerInterface::RESPONSE, "Response from {$url}", $response);
             }
