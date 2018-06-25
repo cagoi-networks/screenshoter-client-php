@@ -10,7 +10,7 @@ use Cagoi\Screenshots;
 
 class MakeParams extends BaseParams {
 
-    const AUTO_SCALE = 'auto';
+    const AUTO_SCALE = 0;
 
     /**@var string - url to take screenshot */
     private $_url;

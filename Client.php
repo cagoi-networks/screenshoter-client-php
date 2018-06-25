@@ -14,9 +14,9 @@ use Cagoi\Screenshots\Logger;
 class Client {
 
     // Make screenshot action
-    const MAKE_SCREENSHOT_ACTION = '/makeScreenshot';
+    const MAKE_SCREENSHOT_ACTION = '/create-job';
     // Get screenshot action
-    const GET_SCREENSHOT_ACTION = '/getScreenshot';
+    const GET_SCREENSHOT_ACTION = '/get-job-result';
 
     /** @var Logger\LoggerInterface */
     private $_logger;
@@ -59,7 +59,7 @@ class Client {
      */
     public function makeScreenshot(Params\MakeParams $params, Adapter\AdapterInterface $adapter, ImageCreator $creator) {
         // Make request
-        $params = $params->getParams($this->_secret);
+        $params = $params->getParams();
         if ($response = $this->postRequest($this->getActionUrl(self::MAKE_SCREENSHOT_ACTION), $params)) {
             $adapter->makeScreenshot($response, $creator);
         }
@@ -72,7 +72,7 @@ class Client {
      */
     public function getScreenshot(Params\GetParams $params, Adapter\AdapterInterface $adapter) {
         // Make request
-        $params = $params->getParams($this->_secret);
+        $params = $params->getParams();
         if ($response = $this->postRequest($this->getActionUrl(self::GET_SCREENSHOT_ACTION), $params)) {
             $adapter->getScreenshot($response);
         }
@@ -116,6 +116,11 @@ class Client {
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: Bearer '. $this->_secret,
+            "Cache-Control: no-cache",
+        ]);
+        
         $response = curl_exec($ch);
 
         if(curl_errno($ch)) {

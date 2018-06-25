@@ -15,11 +15,8 @@ abstract class BaseParams {
      * @param string $secret - client key
      * @return array
      */
-    public function getParams($secret) {
-        return [
-            'secret' => $secret,
-            'params' => $this->params()
-        ];
+    public function getParams() {
+        return $this->params();
     }
 
     abstract public function params();

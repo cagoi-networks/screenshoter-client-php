@@ -1,20 +1,22 @@
 Cagoi screenshots
 =================
 
-Library for easy screenshots making
+Library for an easy screenshots making
 
 
 Quick structure description
 ---------------------------
 
-###"Root directory"
+### "Root directory"
+
 **Cagoi\Screenshots\Client** 			- this class manages all process;
 
 **Cagoi\Screenshots\ImageCreator** 		- helps create images by response from server;
 
 **Cagoi\Screenshots\Exception** 		- library exception;
 
-###"Adapter" directory
+### "Adapter" directory
+
 In this directory you can find predefined adapters. Now available adapter for MongoDb, but you can define new adapter
 for your own purposes. 
 
@@ -23,10 +25,10 @@ It needs for handle such operations:
 - Get screenshot;
 - Callback processing.
 	
-###"Logger" directory
+### "Logger" directory
 Classes for log work process. You can define new logger for your own purposes. Cagoi\Screenshots\Logger\FileLogger - log in file
 	
-###"Params" directory
+### "Params" directory
 Classes in this directory helps prepare request parameters:
 
 **Cagoi\Screenshots\Params\GetParams** - helps with parameters for get screenshot request
@@ -82,9 +84,9 @@ $params->setCallback("http://my.site.com/callback");
 $params->setElementId("<element id>");
 // Delay in milliseconds
 $params->setDelay(1000);
-// Set scale width = 300px, height = auto scale
+// Set scale width = 300px, height = 0 (auto scale)
 $params->addWidthScale(300);
-// Set scale width = auto scale, height = 300px
+// Set scale width = 0 (auto scale), height = 300px
 $params->addHeightScale(300);
 // Set scale width = 300px, height = 300px
 $params->addScale(300, 300);
@@ -92,9 +94,9 @@ $params->addScale(300, 300);
 $creator = Cagoi\Screenshots\ImageCreator();
 // Create full image
 $creator->add('full', '<path to save>', '<filename>');
-// Create image with width = 300px, height = auto scale
+// Create image with width = 300px, height = 0 (auto scale)
 $creator->add('300x0', '<path to save>', '<filename>');
-// Create image with width = auto scale, height = 300px
+// Create image with width = 0 (auto scale), height = 300px
 $creator->add('0x300', '<path to save>', '<filename>');
 // Create image with width = 300px, height = 300px
 $creator->add('300x300', '<path to save>', '<filename>');
