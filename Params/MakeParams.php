@@ -69,13 +69,15 @@ class MakeParams extends BaseParams {
      * Scale setter
      * @param $height
      * @param $width
+     * @param $smart boolean
      * @throws Screenshots\Exception
      */
-    public function addScale($height, $width) {
+    public function addScale($height, $width, $smart = false) {
         if (is_numeric($height) && is_numeric($width)) {
             $this->_scales[] = [
-                'w' => $width ,
-                'h' => $height
+                'w'     => $width ,
+                'h'     => $height,
+                'smart' => (boolean)$smart
             ];
         } else {
             throw new Screenshots\Exception("Incorrect height or width value");

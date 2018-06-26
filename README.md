@@ -1,4 +1,4 @@
-Cagoi screenshots
+Cagoi screenshots v1.0
 =================
 
 Library for an easy screenshots making
@@ -55,6 +55,7 @@ $params = new Cagoi\Screenshots\Params\MakeParams('https://google.com');
 $params->setCallback("http://my.site.com/callback");
 $creator = Cagoi\Screenshots\ImageCreator();
 $creator->add('full', '<path to save>', '<filename>');
+// Send the task
 $client->makeScreenshot($params, $adapter, $creator);
 ```
 
@@ -67,8 +68,10 @@ $params = new Cagoi\Screenshots\Params\MakeParams('https://google.com');
 $params->setCallback("http://my.site.com/callback");
 // Element id setter
 $params->setElementId("<element id>");
+// Saver for ready files
 $creator = Cagoi\Screenshots\ImageCreator();
 $creator->add('full', '<path to save>', '<filename>');
+// Send the task
 $client->makeScreenshot($params, $adapter, $creator);
 ```
 
@@ -90,6 +93,8 @@ $params->addWidthScale(300);
 $params->addHeightScale(300);
 // Set scale width = 300px, height = 300px
 $params->addScale(300, 300);
+// Set scale width = 300px, height = 900px + turn 'smart' resizing on (last parameter)
+$paramsObj->addScale(300, 900, true);
 
 $creator = Cagoi\Screenshots\ImageCreator();
 // Create full image
@@ -100,15 +105,15 @@ $creator->add('300x0', '<path to save>', '<filename>');
 $creator->add('0x300', '<path to save>', '<filename>');
 // Create image with width = 300px, height = 300px
 $creator->add('300x300', '<path to save>', '<filename>');
+// Create image with width = 300px, height = 900px + 'smart' resizing turned on
+$imageCreatorObj->add('smartx300x900', $params['filePath'], '<filename>');
+// Send the task
 $client->makeScreenshot($params, $adapter, $creator);
 ```
 
 ```php
-// Using logger
+// Logger usage
 $client = new Cagoi\Screenshots\Client('http://server.com', 'clientKey');
 $client->setLogger(new Cagoi\Screenshots\Logger\FileLogger("<path to logs directory>"));
 ...
 ```
-		
-
-
